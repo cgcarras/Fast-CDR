@@ -1,4 +1,4 @@
-# Copyright 2016 Proyectos y Sistemas de Mantenimiento SL (eProsima).
+# Copyright 2023 Proyectos y Sistemas de Mantenimiento SL (eProsima).
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,16 +12,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-find_package(GTest CONFIG REQUIRED)
-include(GoogleTest)
-
 ###############################################################################
-# Unit tests
+# Unit tests for XCDR extensions
 ###############################################################################
-set(UNITTESTS_SOURCE SimpleTest.cpp ResizeTest.cpp)
-add_executable(UnitTests ${UNITTESTS_SOURCE})
-set_common_compile_options(UnitTests)
-target_link_libraries(UnitTests fastcdr GTest::gtest_main)
-gtest_discover_tests(UnitTests)
-
-add_subdirectory(xcdr)
+set(XCDR_TEST_SOURCE
+    optional.cpp
+    xcdr_tests.cpp
+    )
+add_executable(xcdr_tests ${XCDR_TEST_SOURCE})
+set_common_compile_options(xcdr_tests)
+target_link_libraries(xcdr_tests fastcdr GTest::gtest_main)
+gtest_discover_tests(xcdr_tests)
