@@ -2892,7 +2892,7 @@ void Cdr::xcdr1_change_to_long_member_header(
 {
     size_t align = alignment(4);
 
-    if (0 < (end_ - offset_ - member_serialized_size - 12 - align))
+    if (0 < (end_ - offset_ - member_serialized_size - 11 - align))
     {
         memmove(&offset_ + 12, &offset_ + 4, member_serialized_size);
     }
@@ -3030,7 +3030,7 @@ void Cdr::xcdr2_change_to_short_member_header(
 void Cdr::xcdr2_change_to_long_member_header(
         size_t member_serialized_size)
 {
-    if (0 < (end_ - offset_ - member_serialized_size - 8))
+    if (0 < (end_ - offset_ - member_serialized_size - 7))
     {
         memmove(&offset_ + 8, &offset_ + 4, member_serialized_size);
     }
